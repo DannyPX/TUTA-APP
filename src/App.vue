@@ -1,8 +1,9 @@
 <template>
 <div class="tuta">
   <header>
+    <button class="tuta-settings invis"></button>
     <p class="tuta-title">TUTA</p>
-    <button class="tuta-settings"><img src="./assets/icon_settings.png" alt=""></button>
+    <button class="tuta-settings"></button>
   </header>
   <div class="tuta-grid-container">
       <div class="tuta-box">
@@ -32,7 +33,7 @@
           <p class="tuta-details-placeholder1">{{ busArrival }}</p>
           <p class="tuta-details-placeholder1">{{ busLine }}</p>
           <p class="tuta-details-constant">Platform</p>
-          <p class="tuta-details-constant">Platform</p>
+          <p class="tuta-details-constant">Pwlatform</p>
           <p></p>
           <p class="tuta-details-placeholder2">{{ busPlatformA }}</p>
           <p class="tuta-details-placeholder2">{{ busPlatformB }}</p>
@@ -85,6 +86,10 @@ export default {
   padding: 0;
 }
 
+.invis {
+  opacity: 0;
+}
+
 .tuta {
   background: #17171D;
   width: 100vw;
@@ -95,8 +100,10 @@ export default {
 
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: 5em;
+  align-items: center;
+  padding: 0 0.5em;
 }
 
 .tuta-title {
@@ -107,15 +114,10 @@ header {
 }
 
 .tuta-settings {
-  width: auto;
-  height: auto;
-  right: 0;
-  position: fixed;
-}
-
-.tuta-settings img {
-  width: 35%;
-  height: auto;
+  background: url('./assets/icon_settings.png');
+  background-size: cover;
+  width: 1.3em;
+  height: 1.3em;
 }
 
 .tuta-grid-container {
