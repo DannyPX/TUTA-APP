@@ -1,14 +1,17 @@
 <template>
   <div class="tuta">
-  <header>
-    <button class="tuta-settings invis"></button>
-    <p class="tuta-title">TUTA</p>
-    <router-link to="/settings"><button class="tuta-settings"></button></router-link>
-  </header>
-  <div class="tuta-grid-container">
+    <header>
+      <router-link to="/"><button class="tuta-back"></button></router-link>
+      <p class="tuta-title">SETTINGS</p>
+      <button class="tuta-settings invis"></button>
+    </header>
+    <div class="tuta-grid-container">
       <div class="tuta-box">
-        <img class="tuta-box-side-image" src="../assets/box_train.png">
-        <p class="tuta-box-title">{{ trainStationA }}<br>{{ trainStationB }}</p>
+        <p class="tuta-box-title">
+          {{ trainStationA }}
+          <br />
+          {{ trainStationB }}
+        </p>
         <div class="tuta-grid-details">
           <p class="tuta-details-constant">Departure</p>
           <p class="tuta-details-constant">Arrival</p>
@@ -24,52 +27,12 @@
           <p class="tuta-details-placeholder2">{{ trainLength }}</p>
         </div>
       </div>
-      <div class="tuta-box">
-        <img class="tuta-box-side-image" src="../assets/box_bus.png">
-        <p class="tuta-box-title">{{ busStationA }}<br>{{ busStationB }}</p>
-        <div class="tuta-grid-details">
-          <p class="tuta-details-constant">Departure</p>
-          <p class="tuta-details-constant">Arrival</p>
-          <p class="tuta-details-constant">Traintype</p>
-          <p class="tuta-details-placeholder1">{{ busDeparture }}</p>
-          <p class="tuta-details-placeholder1">{{ busArrival }}</p>
-          <p class="tuta-details-placeholder1">{{ busLine }}</p>
-          <p class="tuta-details-constant">Platform</p>
-          <p class="tuta-details-constant">Platform</p>
-          <p></p>
-          <p class="tuta-details-placeholder2">{{ busPlatformA }}</p>
-          <p class="tuta-details-placeholder2">{{ busPlatformB }}</p>
-        </div>
-      </div>
-      <div class="tuta-box">
-        <img class="tuta-box-side-image" src="../assets/box_weather.png">
-        <p class="tuta-box-title"><img src="../assets/icon_location.png"> {{ weatherLocation }}</p>
-      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      trainStationA: 'Weert',
-      trainStationB: 'Eindhoven',
-      trainDeparture: '08:20',
-      trainArrival: '08:42',
-      trainType: 'Sprinter',
-      trainPlatformA: '1B',
-      trainPlatformB: '5',
-      busStationA: 'Eindhoven',
-      busStationB: 'Rachelsmolen 1',
-      busDeparture: '08:44',
-      busArrival: '08:47',
-      busLine: '304',
-      busPlatformA: 'E',
-      busPlatformB: '-',
-      weatherLocation: 'Weert'
-    }
-  }
 }
 </script>
 
