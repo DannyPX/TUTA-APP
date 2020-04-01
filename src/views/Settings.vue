@@ -5,27 +5,38 @@
       <p class="tuta-title">SETTINGS</p>
       <button class="tuta-settings invis"></button>
     </header>
-    <div class="tuta-grid-container">
+    <div class="tuta-grid-container-settings">
       <div class="tuta-box">
         <p class="tuta-box-title">
-          {{ trainStationA }}
-          <br />
-          {{ trainStationB }}
+          {{ settings_titleTrain }}
         </p>
-        <div class="tuta-grid-details">
-          <p class="tuta-details-constant">Departure</p>
-          <p class="tuta-details-constant">Arrival</p>
-          <p class="tuta-details-constant">Traintype</p>
-          <p class="tuta-details-placeholder1">{{ trainDeparture }}</p>
-          <p class="tuta-details-placeholder1">{{ trainArrival }}</p>
-          <p class="tuta-details-placeholder1">{{ trainType }}</p>
-          <p class="tuta-details-constant">Platform</p>
-          <p class="tuta-details-constant">Platform</p>
-          <p class="tuta-details-constant">Length</p>
-          <p class="tuta-details-placeholder2">{{ trainPlatformA }}</p>
-          <p class="tuta-details-placeholder2">{{ trainPlatformB }}</p>
-          <p class="tuta-details-placeholder2">{{ trainLength }}</p>
+        <div class="tuta-grid-details-settings">
+          <p class="tuta-details-constant">Station A</p>
+          <p class="tuta-details-constant">Station B</p>
+          <p class="tuta-details-placeholder2">{{ settings_trainStationA }}</p>
+          <p class="tuta-details-placeholder2">{{ settings_trainStationB }}</p>
         </div>
+        <hr class="tuta-divider">
+        <p class="tuta-box-title">
+          {{ settings_titleBus }}
+        </p>
+        <div class="tuta-grid-details-settings">
+          <p class="tuta-details-constant">Location A</p>
+          <p class="tuta-details-constant">Location B</p>
+          <p class="tuta-details-placeholder2">{{ settings_busStationA }}</p>
+          <p class="tuta-details-placeholder2">{{ settings_busStationB }}</p>
+        </div>
+        <hr class="tuta-divider">
+        <p class="tuta-box-title">
+          {{ settings_titleWeather }}
+        </p>
+        <div class="tuta-grid-details-settings">
+          <p class="tuta-details-constant">Location</p>
+          <p class="tuta-details-constant">Current Location</p>
+          <p class="tuta-details-placeholder2">{{ settings_weatherLocation }}</p>
+          <p class="tuta-details-placeholder2" @click="weatherCurrentLocationChange">{{ settings_weatherLocationCurrent }}</p>
+        </div>
+        <p class="tuta-settings-tip">press any name to edit</p>
       </div>
     </div>
   </div>
@@ -33,6 +44,28 @@
 
 <script>
 export default {
+  data () {
+    return {
+      settings_titleTrain: 'Train',
+      settings_trainStationA: 'Weert',
+      settings_trainStationB: 'Eindhoven',
+      settings_titleBus: 'Bus',
+      settings_busStationA: 'Eindhoven',
+      settings_busStationB: 'Rachelsmolen 1',
+      settings_titleWeather: 'Weather',
+      settings_weatherLocation: 'Weert',
+      settings_weatherLocationCurrent: 'On'
+    }
+  },
+  methods: {
+    weatherCurrentLocationChange () {
+      if (this.settings_weatherLocationCurrent === 'On') {
+        this.settings_weatherLocationCurrent = 'Off'
+      } else {
+        this.settings_weatherLocationCurrent = 'On'
+      }
+    }
+  }
 }
 </script>
 
@@ -77,7 +110,7 @@ header {
   height: 1.3em;
 }
 
-.tuta-grid-container {
+.tuta-grid-container-settings {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
@@ -90,6 +123,21 @@ header {
   box-shadow: 0px 0px 20px rgba(0,0,0,.6);
 }
 
+.tuta-divider {
+  border: 0;
+  border-top: .07em solid #757575;
+  margin-top: .4em;
+}
+
+.tuta-settings-tip {
+  color: #ACACAC;
+  font-family: 'Faucet';
+  text-align: center;
+  font-size: 1em;
+  margin-bottom: -.5em;
+  margin-top: .5em;
+}
+
 .tuta-box-side-image {
   float: right;
   max-height: 9.2em;
@@ -100,8 +148,9 @@ header {
 
 .tuta-box-title {
   font-family: "Faucet";
-  font-size: 1.5em;
+  font-size: 1.7em;
   margin-right: 0.7em;
+  margin-bottom: -0.3em;
 }
 
 .tuta-box-title img {
@@ -109,9 +158,9 @@ header {
   height: auto;
 }
 
-.tuta-grid-details {
+.tuta-grid-details-settings {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
   margin-right: 1em;
 }
 
@@ -120,12 +169,6 @@ header {
   font-family: "Faucet";
   font-size: 1em;
   margin-top: .3em;
-}
-
-.tuta-details-placeholder1 {
-  font-family: "Optien";
-  font-size: 1.3em;
-  margin-top: -.2em;
 }
 
 .tuta-details-placeholder2 {

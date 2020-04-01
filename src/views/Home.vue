@@ -1,49 +1,49 @@
 <template>
   <div class="tuta">
   <header>
-    <button class="tuta-settings invis"></button>
+    <button class="tuta-back invis"></button>
     <p class="tuta-title">TUTA</p>
     <router-link to="/settings"><button class="tuta-settings"></button></router-link>
   </header>
-  <div class="tuta-grid-container">
+  <div class="tuta-grid-container-home">
       <div class="tuta-box">
         <img class="tuta-box-side-image" src="../assets/box_train.png">
-        <p class="tuta-box-title">{{ trainStationA }}<br>{{ trainStationB }}</p>
-        <div class="tuta-grid-details">
+        <p class="tuta-box-title">{{ home_trainStationA }}<br>{{ home_trainStationB }}</p>
+        <div class="tuta-grid-details-home">
           <p class="tuta-details-constant">Departure</p>
           <p class="tuta-details-constant">Arrival</p>
           <p class="tuta-details-constant">Traintype</p>
-          <p class="tuta-details-placeholder1">{{ trainDeparture }}</p>
-          <p class="tuta-details-placeholder1">{{ trainArrival }}</p>
-          <p class="tuta-details-placeholder1">{{ trainType }}</p>
+          <p class="tuta-details-placeholder1">{{ home_trainDeparture }}</p>
+          <p class="tuta-details-placeholder1">{{ home_trainArrival }}</p>
+          <p class="tuta-details-placeholder1">{{ home_trainType }}</p>
           <p class="tuta-details-constant">Platform</p>
           <p class="tuta-details-constant">Platform</p>
           <p class="tuta-details-constant">Length</p>
-          <p class="tuta-details-placeholder2">{{ trainPlatformA }}</p>
-          <p class="tuta-details-placeholder2">{{ trainPlatformB }}</p>
-          <p class="tuta-details-placeholder2">{{ trainLength }}</p>
+          <p class="tuta-details-placeholder2">{{ home_trainPlatformA }}</p>
+          <p class="tuta-details-placeholder2">{{ home_trainPlatformB }}</p>
+          <p class="tuta-details-placeholder2">{{ home_trainLength }}</p>
         </div>
       </div>
       <div class="tuta-box">
         <img class="tuta-box-side-image" src="../assets/box_bus.png">
-        <p class="tuta-box-title">{{ busStationA }}<br>{{ busStationB }}</p>
-        <div class="tuta-grid-details">
+        <p class="tuta-box-title">{{ home_busStationA }}<br>{{ home_busStationB }}</p>
+        <div class="tuta-grid-details-home">
           <p class="tuta-details-constant">Departure</p>
           <p class="tuta-details-constant">Arrival</p>
           <p class="tuta-details-constant">Traintype</p>
-          <p class="tuta-details-placeholder1">{{ busDeparture }}</p>
-          <p class="tuta-details-placeholder1">{{ busArrival }}</p>
-          <p class="tuta-details-placeholder1">{{ busLine }}</p>
+          <p class="tuta-details-placeholder1">{{ home_busDeparture }}</p>
+          <p class="tuta-details-placeholder1">{{ home_busArrival }}</p>
+          <p class="tuta-details-placeholder1">{{ home_busLine }}</p>
           <p class="tuta-details-constant">Platform</p>
           <p class="tuta-details-constant">Platform</p>
           <p></p>
-          <p class="tuta-details-placeholder2">{{ busPlatformA }}</p>
-          <p class="tuta-details-placeholder2">{{ busPlatformB }}</p>
+          <p class="tuta-details-placeholder2">{{ home_busPlatformA }}</p>
+          <p class="tuta-details-placeholder2">{{ home_busPlatformB }}</p>
         </div>
       </div>
       <div class="tuta-box">
         <img class="tuta-box-side-image" src="../assets/box_weather.png">
-        <p class="tuta-box-title"><img src="../assets/icon_location.png"> {{ weatherLocation }}</p>
+        <p class="tuta-box-title"><img src="../assets/icon_location.png"> {{ home_weatherLocation }}</p>
       </div>
   </div>
 </div>
@@ -53,21 +53,21 @@
 export default {
   data () {
     return {
-      trainStationA: 'Weert',
-      trainStationB: 'Eindhoven',
-      trainDeparture: '08:20',
-      trainArrival: '08:42',
-      trainType: 'Sprinter',
-      trainPlatformA: '1B',
-      trainPlatformB: '5',
-      busStationA: 'Eindhoven',
-      busStationB: 'Rachelsmolen 1',
-      busDeparture: '08:44',
-      busArrival: '08:47',
-      busLine: '304',
-      busPlatformA: 'E',
-      busPlatformB: '-',
-      weatherLocation: 'Weert'
+      home_trainStationA: 'Weert',
+      home_trainStationB: 'Eindhoven',
+      home_trainDeparture: '08:20',
+      home_trainArrival: '08:42',
+      home_trainType: 'Sprinter',
+      home_trainPlatformA: '1B',
+      home_trainPlatformB: '5',
+      home_busStationA: 'Eindhoven',
+      home_busStationB: 'Rachelsmolen 1',
+      home_busDeparture: '08:44',
+      home_busArrival: '08:47',
+      home_busLine: '304',
+      home_busPlatformA: 'E',
+      home_busPlatformB: '-',
+      home_weatherLocation: 'Weert'
     }
   }
 }
@@ -103,18 +103,18 @@ header {
 .tuta-back {
   background: url('../assets/icon_back.png');
   background-size: cover;
-  width: 1.3em;
-  height: 1.3em;
+  width: 1.2em;
+  height: 1.2em;
 }
 
 .tuta-settings {
   background: url('../assets/icon_settings.png');
   background-size: cover;
-  width: 1.3em;
-  height: 1.3em;
+  width: 1.4em;
+  height: 1.4em;
 }
 
-.tuta-grid-container {
+.tuta-grid-container-home {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
@@ -146,7 +146,7 @@ header {
   height: auto;
 }
 
-.tuta-grid-details {
+.tuta-grid-details-home {
   display: grid;
   grid-template-columns: auto auto auto;
   margin-right: 1em;
