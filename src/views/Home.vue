@@ -60,6 +60,7 @@ export default {
       home_trainType: 'Sprinter',
       home_trainPlatformA: '1B',
       home_trainPlatformB: '5',
+      home_trainLength: '6',
       home_busStationA: 'Eindhoven',
       home_busStationB: 'Rachelsmolen 1',
       home_busDeparture: '08:44',
@@ -69,6 +70,9 @@ export default {
       home_busPlatformB: '-',
       home_weatherLocation: 'Weert'
     }
+  },
+  mounted () {
+    this.$store.dispatch('getWeather')
   }
 }
 </script>
