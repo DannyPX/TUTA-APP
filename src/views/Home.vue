@@ -1,78 +1,122 @@
 <template>
   <div class="tuta">
-  <header>
-    <button class="tuta-back invis"></button>
-    <p class="tuta-title">TUTA</p>
-    <router-link to="/settings"><button class="tuta-settings"></button></router-link>
-  </header>
-  <div class="tuta-grid-container-home">
+    <header>
+      <button class="tuta-back invis"></button>
+      <p class="tuta-title">TUTA</p>
+      <router-link to="/settings"
+        ><button class="tuta-settings"></button
+      ></router-link>
+    </header>
+    <div class="tuta-grid-container-home">
       <div class="tuta-box">
-        <img class="tuta-box-side-image" src="../assets/box_train.png">
-        <p class="tuta-box-title">{{ home_trainStationA }}<br>{{ home_trainStationB }}</p>
+        <img class="tuta-box-side-image" src="../assets/box_train.png" />
+        <p class="tuta-box-title">
+          {{ trainInfo[0].legs[0].origin.name }}<br />{{
+            trainInfo[0].legs[0].destination.name
+          }}
+        </p>
         <div class="tuta-grid-details-home">
           <p class="tuta-details-constant">Departure</p>
           <p class="tuta-details-constant">Arrival</p>
           <p class="tuta-details-constant">Traintype</p>
-          <p class="tuta-details-placeholder1">{{ home_trainDeparture }}</p>
-          <p class="tuta-details-placeholder1">{{ home_trainArrival }}</p>
-          <p class="tuta-details-placeholder1">{{ home_trainType }}</p>
+          <p class="tuta-details-placeholder1-home">
+            {{
+              trainInfo[0].legs[0].origin.plannedDateTime
+                .split("T")[1]
+                .split(":0")[0]
+            }}
+          </p>
+          <p class="tuta-details-placeholder1-home">
+            {{
+              trainInfo[0].legs[0].destination.plannedDateTime
+                .split("T")[1]
+                .split(":0")[0]
+            }}
+          </p>
+          <p class="tuta-details-placeholder1-home">
+            {{ trainInfo[0].legs[0].product.longCategoryName }}
+          </p>
           <p class="tuta-details-constant">Platform</p>
           <p class="tuta-details-constant">Platform</p>
           <p class="tuta-details-constant">Length</p>
-          <p class="tuta-details-placeholder2">{{ home_trainPlatformA }}</p>
-          <p class="tuta-details-placeholder2">{{ home_trainPlatformB }}</p>
-          <p class="tuta-details-placeholder2">{{ home_trainLength }}</p>
+          <p class="tuta-details-placeholder2-home">
+            {{ trainInfo[0].legs[0].origin.plannedTrack }}
+          </p>
+          <p class="tuta-details-placeholder2-home">
+            {{ trainInfo[0].legs[0].destination.plannedTrack }}
+          </p>
+          <p class="tuta-details-placeholder2-home">{{ home_trainLength }}</p>
         </div>
       </div>
       <div class="tuta-box">
-        <img class="tuta-box-side-image" src="../assets/box_bus.png">
-        <p class="tuta-box-title">{{ home_busStationA }}<br>{{ home_busStationB }}</p>
+        <img class="tuta-box-side-image" src="../assets/box_bus.png" />
+        <p class="tuta-box-title">
+          {{
+            busInfo[0].legs[busInfo[0].legs.length - 1].stops[0].location.place
+              .name
+          }}<br />{{
+            busInfo[0].legs[busInfo[0].legs.length - 1].stops[
+              busInfo[0].legs[busInfo[0].legs.length - 1].stops.length - 1
+            ].location.name
+          }}
+        </p>
         <div class="tuta-grid-details-home">
           <p class="tuta-details-constant">Departure</p>
           <p class="tuta-details-constant">Arrival</p>
-          <p class="tuta-details-constant">Traintype</p>
-          <p class="tuta-details-placeholder1">{{ home_busDeparture }}</p>
-          <p class="tuta-details-placeholder1">{{ home_busArrival }}</p>
-          <p class="tuta-details-placeholder1">{{ home_busLine }}</p>
+          <p class="tuta-details-constant">BusLine</p>
+          <p class="tuta-details-placeholder1-home">
+            {{
+              busInfo[0].legs[
+                busInfo[0].legs.length - 1
+              ].stops[0].departure.split("T")[1]
+            }}
+          </p>
+          <p class="tuta-details-placeholder1-home">
+            {{
+              busInfo[0].legs[busInfo[0].legs.length - 1].stops[
+                busInfo[0].legs[busInfo[0].legs.length - 1].stops.length - 1
+              ].arrival.split("T")[1]
+            }}
+          </p>
+          <p class="tuta-details-placeholder1-home">
+            {{ busInfo[0].legs[busInfo[0].legs.length - 1].service }}
+          </p>
           <p class="tuta-details-constant">Platform</p>
           <p class="tuta-details-constant">Platform</p>
           <p></p>
-          <p class="tuta-details-placeholder2">{{ home_busPlatformA }}</p>
-          <p class="tuta-details-placeholder2">{{ home_busPlatformB }}</p>
+          <p class="tuta-details-placeholder2-home">
+            {{ busInfo[0].legs[busInfo[0].legs.length - 1].stops[0].platform }}
+          </p>
+          <p class="tuta-details-placeholder2-home">
+            {{
+              busInfo[0].legs[busInfo[0].legs.length - 1].stops[busInfo[0].legs[busInfo[0].legs.length - 1].stops.length - 1].platform
+            }}
+          </p>
         </div>
       </div>
       <div class="tuta-box">
-        <img class="tuta-box-side-image" src="../assets/box_weather.png">
-        <p class="tuta-box-title"><img src="../assets/icon_location.png"> {{ home_weatherLocation }}</p>
+        <img class="tuta-box-side-image" src="../assets/box_weather.png" />
+        <p class="tuta-box-title">
+          <img src="../assets/icon_location.png" /> {{ home_weatherLocation }}
+        </p>
       </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      home_trainStationA: 'Weert',
-      home_trainStationB: 'Eindhoven',
-      home_trainDeparture: '08:20',
-      home_trainArrival: '08:42',
-      home_trainType: 'Sprinter',
-      home_trainPlatformA: '1B',
-      home_trainPlatformB: '5',
-      home_trainLength: '6',
-      home_busStationA: 'Eindhoven',
-      home_busStationB: 'Rachelsmolen 1',
-      home_busDeparture: '08:44',
-      home_busArrival: '08:47',
-      home_busLine: '304',
-      home_busPlatformA: 'E',
-      home_busPlatformB: '-',
-      home_weatherLocation: 'Weert'
+  computed: {
+    trainInfo () {
+      return this.$store.getters.trainInfo
+    },
+    busInfo () {
+      return this.$store.getters.busInfo
     }
   },
   mounted () {
-    this.$store.dispatch('getWeather')
+    this.$store.dispatch('getTrainInfo')
+    this.$store.dispatch('getBusInfo')
   }
 }
 </script>
@@ -105,14 +149,14 @@ header {
 }
 
 .tuta-back {
-  background: url('../assets/icon_back.png');
+  background: url("../assets/icon_back.png");
   background-size: cover;
   width: 1.2em;
   height: 1.2em;
 }
 
 .tuta-settings {
-  background: url('../assets/icon_settings.png');
+  background: url("../assets/icon_settings.png");
   background-size: cover;
   width: 1.4em;
   height: 1.4em;
@@ -124,18 +168,18 @@ header {
 }
 
 .tuta-box {
-  background: #24242E;
-  border-radius: .8em;
+  background: #24242e;
+  border-radius: 0.8em;
   margin-bottom: 4%;
   padding: 1em 1.5em;
-  box-shadow: 0px 0px 20px rgba(0,0,0,.6);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
 }
 
 .tuta-box-side-image {
   float: right;
   max-height: 9.2em;
   margin: -1em -1.5em;
-  border-radius: .8em;
+  border-radius: 0.8em;
   z-index: -10;
 }
 
@@ -157,25 +201,25 @@ header {
 }
 
 .tuta-details-constant {
-  color: #ACACAC;
+  color: #acacac;
   font-family: "Faucet";
   font-size: 1em;
-  margin-top: .3em;
+  margin-top: 0.3em;
 }
 
-.tuta-details-placeholder1 {
+.tuta-details-placeholder1-home {
   font-family: "Optien";
   font-size: 1.3em;
-  margin-top: -.2em;
+  margin-top: -0.2em;
 }
 
-.tuta-details-placeholder2 {
+.tuta-details-placeholder2-home {
   font-family: "Faucet";
-  font-size: 1.3em;
-  margin-top: -.2em;
+  font-size: 1.4em;
+  margin-top: -0.2em;
 }
 
-@media (min-width:544px) {
+@media (min-width: 544px) {
   .tuta-box {
     margin-right: 4%;
   }
