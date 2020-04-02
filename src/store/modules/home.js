@@ -4,7 +4,7 @@ const state = { weather: [] }
 
 const mutations = { 'SET_WEATHER' (state, weather) { state.weather = weather } }
 
-const actions = { getWeather: ({ commit }, lat, lon) => { axios.get('https://tatu-sm.herokuapp.com/api/weer/get2HForecast/51.48&5.66').then(response => { commit('SET_WEATHER', response.data) }) } }
+const actions = { getWeather: ({ commit }, lat, lon) => { axios.get('https://tatu-app-sm.herokuapp.com/api/weer/get2HForecast/51.48&5.66').then(response => { commit('SET_WEATHER', response.data) }) } }
 
 const getters = {
 }
