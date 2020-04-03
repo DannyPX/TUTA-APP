@@ -47,7 +47,7 @@
           <p class="tuta-details-constant">Length</p>
           <!-- Data showing the planned track / platform the train will depart at -->
           <p class="tuta-details-placeholder2-home">
-            {{ trainInfo[0].legs[0].origin.plannedTrack }}
+            {{ trainInfo[0].legs[0].origin.plannedTrack || trainInfo[0].legs[0].origin.actualTrack }}
           </p>
           <!-- Data showing the planned track / platform the train will arrive at -->
           <p class="tuta-details-placeholder2-home">
@@ -117,7 +117,7 @@
           <!-- Data showing the location for the weather forecast -->
           <img src="../assets/icon_location.png" /> {{ weatherLocation }}
         </p>
-        <!-- Graph showing the expected rainfall for the next 2 hours in mm -->
+        <!-- Graph showing the expected rainfall for the next hour in mm -->
           <area-chart id="weather-chart" :points="false" width="autofit" height="8em" suffix=" mm" :data="weatherInfo"></area-chart>
       </div>
     </div>
