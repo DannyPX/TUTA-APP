@@ -9,4 +9,4 @@ const actions = { getWeather: ({ commit }, lat, lon) => { axios.get('https://tat
 const getters = {
 }
 
-export default { state, mutations, actions, getters }
+export default { state, mutations, actions, getters } 
