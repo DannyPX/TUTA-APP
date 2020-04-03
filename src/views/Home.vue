@@ -115,8 +115,9 @@
         <img class="tuta-box-side-image" src="../assets/box_weather.png" />
         <p class="tuta-box-title">
           <!-- Data showing the location for the weather forecast -->
-          <img src="../assets/icon_location.png" /> {{ home_weatherLocation }}
+          <img src="../assets/icon_location.png" /> {{ weatherLocation }}
         </p>
+        <!-- Graph showing the expected rainfall for the next 2 hours in mm -->
       </div>
     </div>
   </div>
@@ -130,11 +131,18 @@ export default {
     },
     busInfo () {
       return this.$store.getters.busInfo
+    },
+    weatherInfo () {
+      return this.$store.getters.weatherInfo
+    },
+    weatherLocation () {
+      return this.$store.getters.weatherLocation
     }
   },
   mounted () {
     this.$store.dispatch('getTrainInfo')
     this.$store.dispatch('getBusInfo')
+    this.$store.dispatch('getWeatherInfo')
   }
 }
 </script>
