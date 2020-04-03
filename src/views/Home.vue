@@ -54,7 +54,7 @@
             {{ trainInfo[0].legs[0].destination.plannedTrack }}
           </p>
           <!-- Data showing the length of the train -->
-          <p class="tuta-details-placeholder2-home">{{ home_trainLength }}</p>
+          <p class="tuta-details-placeholder2-home">6</p>
         </div>
       </div>
       <!-- The card containg all the bus data -->
@@ -118,6 +118,7 @@
           <img src="../assets/icon_location.png" /> {{ weatherLocation }}
         </p>
         <!-- Graph showing the expected rainfall for the next 2 hours in mm -->
+          <area-chart id="weather-chart" :points="false" width="autofit" height="8em" suffix=" mm" :data="weatherInfo"></area-chart>
       </div>
     </div>
   </div>
@@ -243,6 +244,12 @@ header {
   font-family: "Faucet";
   font-size: 1.4em;
   margin-top: -0.2em;
+}
+
+#weather-chart {
+  margin-right: 2em;
+  margin-top: 1em;
+  margin-bottom: -2em;
 }
 
 @media (min-width: 544px) {

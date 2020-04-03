@@ -17,7 +17,7 @@ export default new Vuex.Store({
     // Storing the locations for the 9292 API
     busLinkAPI: 'station-eindhoven&eindhoven_bushalte-looierstraat&2020-04-04T1754',
     // Storing the latitude and longitude for the Weather API
-    weatherLinkAPI: '51.44&5.47',
+    weatherLinkAPI: '52.02&5.55',
     // Storing the name of the location for the latitude and longitude
     weatherLocation: 'Eindhoven'
   },
