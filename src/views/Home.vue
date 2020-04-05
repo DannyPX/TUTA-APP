@@ -100,12 +100,12 @@
           <p></p>
           <!-- Data showing the planned platform the train will depart at-->
           <p class="tuta-details-placeholder2-home">
-            {{ busInfo[0].legs[busInfo[0].legs.length - 1].stops[0].platform }}
+            {{ busInfo[0].legs[busInfo[0].legs.length - 1].stops[0].platform || '-' }}
           </p>
           <!-- Data showing the planned platform the train will arrive at -->
           <p class="tuta-details-placeholder2-home">
             {{
-              busInfo[0].legs[busInfo[0].legs.length - 1].stops[busInfo[0].legs[busInfo[0].legs.length - 1].stops.length - 1].platform
+              busInfo[0].legs[busInfo[0].legs.length - 1].stops[busInfo[0].legs[busInfo[0].legs.length - 1].stops.length - 1].platform || '-'
             }}
           </p>
         </div>
@@ -254,7 +254,7 @@ header {
 
 @media (min-width: 544px) {
   .tuta-box {
-    margin-right: 4%;
+    margin-right: 1em;
   }
 
   .tuta-box-side-image {
