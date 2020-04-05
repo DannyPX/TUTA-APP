@@ -24,22 +24,22 @@
         </div>
         <div class="tuta-grid-details-settings">
           <p class="tuta-details-constant">Station B</p>
-          <!-- The dropdown for choosing train station A -->
+          <!-- The dropdown for choosing train station B -->
           <multiselect
           placeholder="Choose a station"
-          :value="selectedTrainStationA"
+          :value="selectedTrainStationB"
           :options="trainStations"
           track-by="id"
           label="name"
-          @select="updateTrainStationA">
+          @select="updateTrainStationB">
           </multiselect>
         </div>
         <!-- Bus settings -->
-        <p style="margin-top: .5em;" class="tuta-box-title">Bus</p>
+        <p style="margin-top: .3em;" class="tuta-box-title">Bus</p>
         <hr class="tuta-divider-bus">
         <div class="tuta-grid-details-settings">
           <p class="tuta-details-constant">Location A</p>
-          <!-- The dropdown for choosing train station A -->
+          <!-- The dropdown for choosing bus location A -->
           <multiselect
           placeholder="Choose a station"
           :value="selectedTrainStationA"
@@ -49,7 +49,7 @@
           @select="updateTrainStationA">
           </multiselect>
           <p class="tuta-details-constant">Location B</p>
-          <!-- The dropdown for choosing train station A -->
+          <!-- The dropdown for choosing bus location B -->
           <multiselect
           placeholder="Choose a station"
           :value="selectedTrainStationA"
@@ -60,7 +60,7 @@
           </multiselect>
         </div>
         <!-- Weather settings -->
-        <p style="margin-top: .5em;" class="tuta-box-title">Weather</p>
+        <p style="margin-top: .3em;" class="tuta-box-title">Weather</p>
         <hr class="tuta-divider-weather">
         <div class="tuta-grid-details-settings">
           <p class="tuta-details-constant">Location</p>
@@ -81,9 +81,6 @@ import Multiselect from 'vue-multiselect'
 export default {
   data () {
     return {
-      settings_trainStationB: 'Eindhoven',
-      settings_busStationA: 'Eindhoven',
-      settings_busStationB: 'Rachelsmolen 1',
       settings_weatherLocation: 'Weert',
       settings_weatherLocationCurrent: 'On'
     }
@@ -91,7 +88,8 @@ export default {
   computed: {
     ...mapGetters([
       'trainStations',
-      'selectedTrainStationA'
+      'selectedTrainStationA',
+      'selectedTrainStationB'
     ])
     // ------- OLD CODE ------------
     // // Retrieve all train stations from the store
@@ -114,7 +112,8 @@ export default {
     },
     // Import the actions from the store into the methods
     ...mapActions([
-      'updateTrainStationA'
+      'updateTrainStationA',
+      'updateTrainStationB'
     ])
   },
   // Execute the method that retrieves all the train stations
