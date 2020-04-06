@@ -66,7 +66,8 @@
           <p class="tuta-details-constant">Location</p>
           <p class="tuta-details-placeholder2">{{ settings_weatherLocation }}</p>
           <p class="tuta-details-constant">Current Location</p>
-          <p class="tuta-details-placeholder2" @click="weatherCurrentLocationChange">{{ settings_weatherLocationCurrent }}</p>
+          <!-- On / Off button to enable or disable the use of current location for weather -->
+          <p class="tuta-details-placeholder2" @click="!currentWeatherLocation ? enableCurrentWeatherLocation() : disableCurrentWeatherLocation()">{{ currentWeatherLocation ? "On" : "Off" }}</p>
         </div>
         <p class="tuta-settings-tip">press any name to edit</p>
       </div>
@@ -79,41 +80,26 @@ import { mapGetters, mapActions } from 'vuex'
 import Multiselect from 'vue-multiselect'
 
 export default {
-  data () {
-    return {
-      settings_weatherLocation: 'Weert',
-      settings_weatherLocationCurrent: 'On'
-    }
-  },
   computed: {
+    // Import the getters from the store into computed properties
     ...mapGetters([
       'trainStations',
       'selectedTrainStationA',
-      'selectedTrainStationB'
+      'selectedTrainStationB',
+      'busStations',
+      'busStationA',
+      'busStationB',
+      'currentWeatherLocation',
+      'weatherLocation'
     ])
-    // ------- OLD CODE ------------
-    // // Retrieve all train stations from the store
-    // trainStations () {
-    //   return this.$store.getters.trainStations
-    // },
-    // // Retrieve the currently selected train station A from the store
-    // selectedTrainStationA () {
-    //   return this.$store.getters.stateTrainStationA
-    // }
   },
   methods: {
-    // Turn the current weather location on / off
-    weatherCurrentLocationChange () {
-      if (this.settings_weatherLocationCurrent === 'On') {
-        this.settings_weatherLocationCurrent = 'Off'
-      } else {
-        this.settings_weatherLocationCurrent = 'On'
-      }
-    },
     // Import the actions from the store into the methods
     ...mapActions([
       'updateTrainStationA',
-      'updateTrainStationB'
+      'updateTrainStationB',
+      'enableCurrentWeatherLocation',
+      'disableCurrentWeatherLocation'
     ])
   },
   // Execute the method that retrieves all the train stations
