@@ -64,7 +64,7 @@
         <hr class="tuta-divider-weather">
         <div class="tuta-grid-details-settings">
           <p class="tuta-details-constant">Location</p>
-          <p class="tuta-details-placeholder2">{{ settings_weatherLocation }}</p>
+          <p class="tuta-details-placeholder2">{{ weatherLocation }}</p>
           <p class="tuta-details-constant">Current Location</p>
           <!-- On / Off button to enable or disable the use of current location for weather -->
           <p class="tuta-details-placeholder2" @click="!currentWeatherLocation ? enableCurrentWeatherLocation() : disableCurrentWeatherLocation()">{{ currentWeatherLocation ? "On" : "Off" }}</p>

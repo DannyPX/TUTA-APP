@@ -30,7 +30,11 @@ const mutations = {
   // Mutations for bus settings
   // Mutations for weather settings
   'ENABLE_CURRENT_WEATHER_LOCATION' (state, currentWeatherLocation) {
-    state.currentWeatherLocation = true
+    navigator.geolocation.getCurrentPosition(function (position) {
+      state.weatherLatitude = position.coords.latitude.toFixed(2)
+      state.weatherLongitude = position.coords.longitude.toFixed(2)
+      state.currentWeatherLocation = true
+    })
   },
   'DISABLE_CURRENT_WEATHER_LOCATION' (state, currentWeatherLocation) {
     state.currentWeatherLocation = false
