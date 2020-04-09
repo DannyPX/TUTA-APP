@@ -99,6 +99,12 @@ const getters = {
   },
   weatherLocation: state => {
     return state.weatherLocation
+  },
+  test1: state => {
+    return state.weatherLatitude
+  },
+  test2: state => {
+    return state.weatherLongitude
   }
 }
 

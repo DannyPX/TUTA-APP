@@ -12,7 +12,7 @@ const state = {
   // Storing the locations for the 9292 API
   busLinkAPI: 'station-eindhoven&eindhoven_bushalte-looierstraat&2020-04-12T1754',
   // Storing the latitude and longitude for the Weather API
-  weatherLinkAPI: '51.28&5.76'
+  weatherLinkAPI: '51.69&5.31'
 }
 
 const mutations = {
